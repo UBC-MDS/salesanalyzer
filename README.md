@@ -11,7 +11,7 @@ $ pip install salesanalyzer
 ```
 
 ## Functions
-- `__name__`: Segments products into three categories: cheap, medium, expensive, based on price, and calculates their respective share in total revenue. 
+- `segment_revenue_share`: Segments products into three categories: cheap, medium, expensive, based on price, and calculates their respective share in total revenue. 
 - `predictSales`: Predicts future sales based on the provided historical data and the target.
 - `__name__`: Ranks the most returned products
 
