@@ -38,6 +38,13 @@ If you are proposing a feature:
 * Remember that this is a volunteer-driven project, and that contributions
   are welcome :)
 
+### Fixing Typos
+
+If you spot small typos or grammatical errors in documentation, you can fix them directly using the GitHub web interface, as long as the changes are made in the source file.
+
+* **YES**: Edit a comment or documentation block in a `.R` file under the `R/` directory.
+* **NO**: Do not edit `.Rd` files under the `man/` directory.
+
 ## Get Started!
 
 Ready to contribute? Here's how to set up `salesanalyzer` for local development.
@@ -61,11 +68,20 @@ Ready to contribute? Here's how to set up `salesanalyzer` for local development.
 
 ## Pull Request Guidelines
 
+### Prerequisites 
+
+Before submitting a pull request (PR), it’s important to first file an issue to ensure the problem is understood and agreed upon. If you've discovered a bug, please create an issue and provide a minimal [reprex](https://www.tidyverse.org/help/#reprex) that illustrates the problem.
+
 Before you submit a pull request, check that it meets these guidelines:
 
 1. The pull request should include additional tests if appropriate.
 2. If the pull request adds functionality, the docs should be updated.
-3. The pull request should work for all currently supported operating systems and versions of Python.
+3. The pull request should work for all currently supported operating systems and versions of Python
+
+### Pull Request Process
+
+* **Branching**: We recommend creating a separate Git branch for each pull request (PR).
+* **Code Style**: Please ensure new code follows the [tidyverse style guide](http://style.tidyverse.org) and PEP8 [style guide](https://www.python.org/dev/peps/pep-0008/). Please don’t reformat code unrelated to your PR.
 
 ## Code of Conduct
 
