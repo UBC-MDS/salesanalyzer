@@ -1,4 +1,12 @@
-def predictSales(sales_data, features, target, test_size=0.3):
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.compose import make_column_transformer
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import mean_squared_error
+import numpy as np
+
+def predictSales(sales_data, new_data, numeric_features, date_feature, categorical_features, target, test_size=0.3):
     """
     Predicts future sales based on the provided historical data.
     
@@ -6,8 +14,14 @@ def predictSales(sales_data, features, target, test_size=0.3):
     -----------
     sales_data: pd.DataFrame
         DataFrame containing historical sales data.
-    features: list
-        List of columns to use as features.
+    new_data: pd.DataFrame
+        DataFrame containing new data to predict on.
+    numeric_features: list
+        List of columns to use as features with numeric data type.
+    date_feature: list
+        List of columns to use as features with date data type.
+    categorical_features: list
+        List of columns to use as features with character data type.
     target: str
         Name of the target column.
     test_size: float
@@ -19,7 +33,50 @@ def predictSales(sales_data, features, target, test_size=0.3):
     dict:
         A dictionary with model performance and a prediction
     """
-    pass
+    
+    if not isinstance(sales_data, pd.DataFrame):
+        
+        raise ValueError("data parameter should be a pandas DataFrame")
+    sales_data = sales_data.dropna()
+    if date_feature:
+        sales_data["year"] = pd.to_datetime(sales_data[date_feature]).dt.year
+        sales_data["month"] = pd.to_datetime(sales_data[date_feature]).dt.month
+        sales_data["day"] = pd.to_datetime(sales_data[date_feature]).dt.day
+        
+        new_data["year"] = pd.to_datetime(new_data[date_feature]).dt.year
+        new_data["month"] = pd.to_datetime(new_data[date_feature]).dt.month
+        new_data["day"] = pd.to_datetime(new_data[date_feature]).dt.day
+        numeric_features.extend(["year", "month", "day"])
+    
+    X = sales_data[numeric_features + categorical_features]
+    y = sales_data[target]
+    print('COLUMNS', X.columns.to_list)
+    
+    X_new = new_data[numeric_features + categorical_features]
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=123)
+    
+
+    preprocessor = make_column_transformer(
+        (OneHotEncoder(handle_unknown="ignore"), categorical_features),
+        remainder='passthrough'
+    )
+    
+    X_train = preprocessor.fit_transform(X_train)
+    X_test = preprocessor.transform(X_test)
+    X_new = preprocessor.transform(X_new)
+    
+    model = RandomForestRegressor(random_state=123)
+    model.fit(X_train, y_train)
+    
+    y_pred = model.predict(X_test)
+    mse = mean_squared_error(y_test, y_pred)
+    
+    
+    new_pred = model.predict(X_new)
+    return {
+        "MSE of the model": mse,
+        "Preicted values": new_pred
+    }
 
 
 def sales_summary_statistics(sales_data):
