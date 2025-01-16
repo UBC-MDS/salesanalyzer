@@ -80,3 +80,28 @@ def test_sales_summary_statistics_invalid_input():
     # Test with a string (not a DataFrame)
     with pytest.raises(ValueError, match="sales_data parameter should be a pandas DataFrame"):
         sales_summary_statistics("invalid_input")  # String instead of DataFrame
+
+def test_sales_summary_statistics_column_errors():
+    """
+    Test that the dataframe includes required columns
+    """
+    # Test with missing columns (e.g., missing 'Quantity')
+    data_missing_column = pd.DataFrame({
+        'UnitPrice': [100, 200],
+        'CustomerID': [1, 2],
+        'InvoiceNo': ['INV001', 'INV002'],
+        'Description': ['Product A', 'Product B']
+    })
+    with pytest.raises(ValueError, match="Missing required columns: Quantity"):
+        sales_summary_statistics(data_missing_column)
+
+    # Test with incorrect column names (e.g., 'InvoiceNO' instead of 'InvoiceNo')
+    data_incorrect_column = pd.DataFrame({
+        'Quantity': [10, 5],
+        'UnitPrice': [100, 200],
+        'CustomerID': [1, 2],
+        'InvoiceNO': ['INV001', 'INV002'],  # Incorrect case for 'InvoiceNo'
+        'Description': ['Product A', 'Product B']
+    })
+    with pytest.raises(ValueError, match="Missing required columns: InvoiceNo"):
+        sales_summary_statistics(data_incorrect_column)
