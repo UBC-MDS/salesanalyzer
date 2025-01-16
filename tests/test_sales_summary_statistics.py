@@ -3,51 +3,35 @@ import pytest
 import pandas as pd
 from pandas.testing import assert_frame_equal
 
+@pytest.fixture
+def sample_data():
+    return pd.DataFrame({
+        'Quantity': [10, 5, 3, 15],
+        'UnitPrice': [100, 200, 150, 100],
+        'CustomerID': [1, 2, 1, 3],
+        'InvoiceNo': ['INV001', 'INV002', 'INV003', 'INV004'],
+        'Description': ['Product A', 'Product B', 'Product A', 'Product C']
+    })
 
-def test_sales_summary_statistics_empty():
-    """
-    Edge Case 1: Empty DataFrame (No sales data)
-    """
-    empty_df = pd.DataFrame(columns=['Description', 
-                                     'Quantity', 'InvoiceDate', 'UnitPrice', 
-                                     'CustomerID'])
+def test_empty_dataframe():
+    # Edge case: Empty DataFrame
+    empty_df = pd.DataFrame(columns=['Quantity', 'UnitPrice', 'CustomerID', 'InvoiceNo', 'Description'])
     result = sales_summary_statistics(empty_df)
-    expected_empty_result = pd.DataFrame({
-        'Average_Customer_Lifetime_Value': [None],
-        'Total_Revenue': [0],
-        'Total_Products_Sold': [0],
-        'Unique_Customers': [0],
-        'Top_Selling_Product_by_Quantity': [None],
-        'Top_Selling_Product_by_Revenue': [None],
-        'Average_Revenue_per_Customer': [None],
-        'Return_Proportion': [None]
-    })
+    
+    # Check if the result is an empty DataFrame
+    pd.testing.assert_frame_equal(result, pd.DataFrame({}))
 
-    assert_frame_equal(result, expected_empty_result, check_like=True)
-
-def test_sales_summary_statistics_single():
-    """
-    Edge Case 2: Single row of sales data
-    """
-    single_row_df = pd.DataFrame({
-        'InvoiceNo': [123],
-        'Description': ['Test Product'],
-        'Quantity': [1],
-        'InvoiceDate': ['2025-01-01'],
-        'UnitPrice': [10.0],
-        'CustomerID': [123]
+# Test 2: Test with normal data (all columns present)
+def test_sales_summary_statistics_normal_data(sample_data):
+    result = sales_summary_statistics(sample_data)
+    
+    expected = pd.DataFrame({
+        'total_revenue': [3950],
+        'unique_customers': [3],
+        'average_order_value': [987.5],
+        'top_selling_product_quantity': ['Product C'],
+        'top_selling_product_revenue': ['Product C'],
+        'average_revenue_per_customer': [1316.666667]
     })
-    result = sales_summary_statistics(single_row_df)
-    expected_single_row_result = pd.DataFrame({
-        'Average_Customer_Lifetime_Value': [10.0],
-        'Total_Revenue': [10.0],
-        'Total_Products_Sold': [1],
-        'Unique_Customers': [1],
-        'Top_Selling_Product_by_Quantity': ['Test Product'],
-        'Top_Selling_Product_by_Revenue': ['Test Product'],
-        'Average_Revenue_per_Customer': [10.0],
-        'Return_Proportion': [0.0],
-        'Average_Order_Value': [10.0]
-    })
-    assert_frame_equal(result, expected_single_row_result, check_like=True)
-
+    
+    assert_frame_equal(result, expected, check_exact=False, check_like=True)
