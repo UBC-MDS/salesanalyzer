@@ -1,0 +1,8 @@
+product_name,unit_price,invoice_date,city,quantity
+Laptop,1200,2023-11-03,Vancouver,1
+Monitor,800,2024-12-08,Toronto,2
+Headphones,150,2024-06-26,Calgary,2
+Laptop,3000,2024-05-11,Vancouver,4
+Headphones,200,2024-02-14,Calgary,4
+Laptop,2000,2024-01-20,Vancouver,2
+Monitor,500,2024-05-30,Toronto,5

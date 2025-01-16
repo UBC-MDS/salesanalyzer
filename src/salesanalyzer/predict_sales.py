@@ -33,6 +33,17 @@ def predict_sales(sales_data, new_data, numeric_features, categorical_features, 
     --------
     dict:
         A dictionary with model performance and a prediction
+    
+    Examples:
+    --------
+    >>> sales_data = pd.DataFrame({'name': ['laptop', 'monitor'], 'price': [100, 200], 'quantity': [2, 1]})
+    >>> new_data = pd.DataFrame({'name': 'laptop', 'price' : 300})
+    >>> numeric_features = ['price']
+    >>> categorical_features = ['name']
+    >>> target = 'quantity'
+    >>> predict_sales(sales_data, new_data, numeric_features, categorical_features, target)
+    {'MSE of the model': np.float64(1.02),
+    'Preicted values': array([ 245.40])}
     """
     if not isinstance(sales_data, pd.DataFrame):
         raise ValueError("sales_data parameter should be a pandas DataFrame")
@@ -90,6 +101,6 @@ def predict_sales(sales_data, new_data, numeric_features, categorical_features, 
     
     new_pred = model.predict(X_new)
     return {
-        "MSE of the model": mse,
-        "Preicted values": new_pred
+        "MSE of the model": round(mse, 2),
+        "Preicted values": round(new_pred,2)
     }
