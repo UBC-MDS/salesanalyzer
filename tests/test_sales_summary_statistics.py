@@ -14,15 +14,19 @@ def sample_data():
     })
 
 def test_empty_dataframe():
-    # Edge case: Empty DataFrame
+    """
+    Edge case: Empty DataFrame
+    """
     empty_df = pd.DataFrame(columns=['Quantity', 'UnitPrice', 'CustomerID', 'InvoiceNo', 'Description'])
     result = sales_summary_statistics(empty_df)
     
     # Check if the result is an empty DataFrame
     pd.testing.assert_frame_equal(result, pd.DataFrame({}))
 
-# Test 2: Test with normal data (all columns present)
 def test_sales_summary_statistics_normal_data(sample_data):
+    """
+    Test with normal data (all columns present)
+    """
     result = sales_summary_statistics(sample_data)
     
     expected = pd.DataFrame({
@@ -37,7 +41,9 @@ def test_sales_summary_statistics_normal_data(sample_data):
     assert_frame_equal(result, expected, check_exact=False, check_like=True)
 
 def test_sales_summary_statistics_single_transaction(sample_data):
-    # Test 3: Test with a single transaction
+    """
+    Test with a single transaction
+    """
     single_transaction = sample_data.head(1).copy()
     
     result = sales_summary_statistics(single_transaction)
@@ -53,3 +59,24 @@ def test_sales_summary_statistics_single_transaction(sample_data):
     })
     
     assert_frame_equal(result, expected, check_exact=False, check_like=True)
+
+
+def test_sales_summary_statistics_invalid_input():
+    """
+    Test that the function raises a ValueError when input is not a pandas DataFrame
+    """
+    # Test with a list (not a DataFrame)
+    with pytest.raises(ValueError, match="sales_data parameter should be a pandas DataFrame"):
+        sales_summary_statistics([10, 5, 3, 15])  # List instead of DataFrame
+
+    # Test with a dictionary (not a DataFrame)
+    with pytest.raises(ValueError, match="sales_data parameter should be a pandas DataFrame"):
+        sales_summary_statistics({'Quantity': [10, 5, 3, 15]})  # Dictionary instead of DataFrame
+    
+    # Test with None (not a DataFrame)
+    with pytest.raises(ValueError, match="sales_data parameter should be a pandas DataFrame"):
+        sales_summary_statistics(None)  # None instead of DataFrame
+
+    # Test with a string (not a DataFrame)
+    with pytest.raises(ValueError, match="sales_data parameter should be a pandas DataFrame"):
+        sales_summary_statistics("invalid_input")  # String instead of DataFrame

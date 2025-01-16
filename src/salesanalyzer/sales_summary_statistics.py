@@ -47,16 +47,20 @@ def sales_summary_statistics(sales_data):
         top_selling_product_revenue     Product A
         average_revenue_per_customer    916.666667
     """
+
+    if not isinstance(sales_data, pd.DataFrame):
+        raise ValueError("sales_data parameter should be a pandas DataFrame")
     
     if len(sales_data.index) == 0:
         return pd.DataFrame({})
     
     # Get summary variables
     sales_data['Revenue'] = sales_data['Quantity'] * sales_data['UnitPrice']
+    sales_data['Revenue'].astype(float)
 
     unique_customers = sales_data['CustomerID'].nunique()
 
-    total_revenue = (sales_data['Quantity'] * sales_data['UnitPrice']).sum()
+    total_revenue = (sales_data['Quantity'] * sales_data['UnitPrice']).sum().astype(float)
 
     top_selling_product_quantity = sales_data.groupby('Description')['Quantity'].sum().idxmax()
 
