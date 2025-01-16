@@ -1,3 +1,5 @@
+import pandas as pd
+
 def sales_summary_statistics(sales_data):
     """
     Generates a DataFrame with summary statistics for the sales data.
@@ -23,4 +25,17 @@ def sales_summary_statistics(sales_data):
             - 'Average Revenue per Customer'
             - 'Return Proportion (if applicable)'
     """
+    if len(sales_data.index) == 0:
+        return pd.DataFrame({
+            'Average Order Value': [None],
+            'Average Customer Lifetime Value (CLV)': [None],
+            'Average Invoice Value': [None],
+            'Total Revenue': [0],
+            'Total Products Sold': [0],
+            'Unique Customers': [0],
+            'Top Selling Product by Quantity': [None],
+            'Top Selling Product by Revenue': [None],
+            'Average Revenue per Customer': [None],
+            'Return Proportion': [None]
+        })
     pass
