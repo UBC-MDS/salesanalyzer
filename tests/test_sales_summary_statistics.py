@@ -26,12 +26,30 @@ def test_sales_summary_statistics_normal_data(sample_data):
     result = sales_summary_statistics(sample_data)
     
     expected = pd.DataFrame({
-        'total_revenue': [3950],
+        'total_revenue': [3950.0],
         'unique_customers': [3],
         'average_order_value': [987.5],
         'top_selling_product_quantity': ['Product C'],
         'top_selling_product_revenue': ['Product C'],
         'average_revenue_per_customer': [1316.666667]
+    })
+    
+    assert_frame_equal(result, expected, check_exact=False, check_like=True)
+
+def test_sales_summary_statistics_single_transaction(sample_data):
+    # Test 3: Test with a single transaction
+    single_transaction = sample_data.head(1).copy()
+    
+    result = sales_summary_statistics(single_transaction)
+    
+    # Single transaction: 
+    expected = pd.DataFrame({
+        'total_revenue': [1000.0],
+        'unique_customers': [1],
+        'average_order_value': [1000.0],
+        'top_selling_product_quantity': ['Product A'],
+        'top_selling_product_revenue': ['Product A'],
+        'average_revenue_per_customer': [1000.0]
     })
     
     assert_frame_equal(result, expected, check_exact=False, check_like=True)
