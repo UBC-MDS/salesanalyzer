@@ -48,5 +48,3 @@ def segment_revenue_share(sales_data, price_col='UnitPrice', quantity_col='Quant
         )
 
     return revenue_share
-
-
