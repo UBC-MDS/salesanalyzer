@@ -44,6 +44,8 @@ def test_output():
     result = predict_sales(test_data, test_new_data, valid_num_features, 
                            valid_cat_features, valid_target)
     assert isinstance(result, dict)
+    assert all(isinstance(value, float) for value in result["Preicted values"])
+    assert all(abs(value - round(value, 2)) < 1e-6 for value in result["Preicted values"])
 
 def test_missing_input():
     """Tests if predict_sales() raises a ValueError when there is missing input"""
