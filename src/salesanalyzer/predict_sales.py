@@ -102,5 +102,5 @@ def predict_sales(sales_data, new_data, numeric_features, categorical_features, 
     new_pred = model.predict(X_new)
     return {
         "MSE of the model": round(mse, 2),
-        "Preicted values": round(new_pred,2)
+        "Preicted values": [round(value, 2) for value in new_pred]
     }
