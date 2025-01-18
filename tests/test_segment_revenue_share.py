@@ -1,7 +1,7 @@
 import pytest
 import pandas as pd
 from pandas.testing import assert_frame_equal
-from salesanalyzer.salesanalyzer import segment_revenue_share
+from salesanalyzer.segment_revenue_share import segment_revenue_share
 
 
 @pytest.fixture
