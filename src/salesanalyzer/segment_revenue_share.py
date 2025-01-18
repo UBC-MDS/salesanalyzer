@@ -2,8 +2,8 @@ import pandas as pd
 
 
 def segment_revenue_share(sales_data,
-                          price_col='UnitPrice',
-                          quantity_col='Quantity'):
+                          price_col='unit_price',
+                          quantity_col='quantity'):
     """
     Segments products into three categories—cheap, medium, and expensive—
     based on price, and calculates their respective share in total revenue.
@@ -13,9 +13,9 @@ def segment_revenue_share(sales_data,
     sales_data : pd.DataFrame
         DataFrame containing historical sales data.
     price_col : str
-        Column containing product prices. Default is 'UnitPrice'.
+        Column containing product prices. Default is 'unit_price'.
     quantity_col : str
-        Column containing quantities sold. Default is 'Quantity'.
+        Column containing quantities sold. Default is 'quantity'.
 
     Returns:
     --------
@@ -78,8 +78,14 @@ def segment_revenue_share(sales_data,
         .rename(columns={'Revenue': 'TotalRevenue'})
     )
     total_revenue = revenue_share['TotalRevenue'].sum()
-    revenue_share['RevenueShare (%)'] = (
-        (revenue_share['TotalRevenue'] / total_revenue) * 100
+
+    # Handle cases where total revenue is 0
+    if total_revenue == 0:
+        revenue_share['RevenueShare (%)'] = 0.0
+    else:
+        revenue_share['RevenueShare (%)'] = (
+            (revenue_share['TotalRevenue'] / total_revenue) * 100
         )
 
+    revenue_share = revenue_share.round({'TotalRevenue': 2, 'RevenueShare (%)': 2})
     return revenue_share
