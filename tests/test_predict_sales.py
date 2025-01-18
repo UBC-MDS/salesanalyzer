@@ -40,7 +40,7 @@ def test_input_type():
                       valid_cat_features, valid_target, valid_date_feature)
         
 def test_output_no_date_feature():
-    """Tests that predict_sales() rund and returns a dictionary without a date feature"""
+    """Tests that predict_sales() round and returns a dictionary without a date feature"""
     result = predict_sales(test_data, test_new_data, valid_num_features, 
                            valid_cat_features, valid_target)
     assert isinstance(result, dict)
@@ -48,7 +48,7 @@ def test_output_no_date_feature():
     assert all(abs(value - round(value, 2)) < 1e-6 for value in result["Predicted values"])
 
 def test_output_with_date_feature():
-    """Tests that predict_sales() rund and returns a dictionary with a date feature"""
+    """Tests that predict_sales() round and returns a dictionary with a date feature"""
     result = predict_sales(test_data, test_new_data, valid_num_features, 
                            valid_cat_features, valid_target, valid_date_feature)
     assert isinstance(result, dict)
