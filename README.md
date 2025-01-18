@@ -10,15 +10,16 @@ The sales_analyzer package will be an addition to the Python ecosystem as a spec
 $ pip install salesanalyzer
 ```
 
-## Functions
+## Usage
 - `segment_revenue_share`: Segments products into three categories: cheap, medium, expensive, based on price, and calculates their respective share in total revenue. 
 - `predictSales`: Predicts future sales based on the provided historical data and the target.
 - `sales_summary_statistics`: Calculates a variety of summary statistics that provide insights into overall sales performance,
     customer behavior, and product performance.
 
-## Usage
 
-- TODO
+## Position in Python Ecosystem
+
+The `salesanalyzer` package provides a quick, easy-to-use tools for generating summaries and basic predictive modeling specifically for sales datasets. `salesanalyzer` offers pre-built functions tailored for retail analysis, making it ideal for small to medium-sized businesses needing fast insights into sales performance without complex setup. It simplifies tasks like revenue calculation and sales forecasting, offering a ready-to-use solution for retail-specific analytics.
 
 ## Contributors
 - Yeji Sohn
