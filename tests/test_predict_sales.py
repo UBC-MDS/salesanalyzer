@@ -39,15 +39,24 @@ def test_input_type():
         predict_sales(test_data, test_new_data, ['city', 'unit_price'],
                       valid_cat_features, valid_target, valid_date_feature)
         
-def test_output():
-    """Tests that predict_sales() returns a dictionary"""
+def test_output_no_date_feature():
+    """Tests that predict_sales() round and returns a dictionary without a date feature"""
     result = predict_sales(test_data, test_new_data, valid_num_features, 
                            valid_cat_features, valid_target)
     assert isinstance(result, dict)
-    assert all(isinstance(value, float) for value in result["Preicted values"])
-    assert all(abs(value - round(value, 2)) < 1e-6 for value in result["Preicted values"])
+    assert all(isinstance(value, float) for value in result["Predicted values"])
+    assert all(abs(value - round(value, 2)) < 1e-6 for value in result["Predicted values"])
+
+def test_output_with_date_feature():
+    """Tests that predict_sales() round and returns a dictionary with a date feature"""
+    result = predict_sales(test_data, test_new_data, valid_num_features, 
+                           valid_cat_features, valid_target, valid_date_feature)
+    assert isinstance(result, dict)
+    assert all(isinstance(value, float) for value in result["Predicted values"])
+    assert all(abs(value - round(value, 2)) < 1e-6 for value in result["Predicted values"])
 
 def test_missing_input():
     """Tests if predict_sales() raises a ValueError when there is missing input"""
     with pytest.raises(Exception):
         predict_sales(test_data, new_data)
+
