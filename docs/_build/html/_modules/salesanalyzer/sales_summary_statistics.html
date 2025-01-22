@@ -1,0 +1,178 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>salesanalyzer.sales_summary_statistics &mdash; salesanalyzer  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            salesanalyzer
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../example.html">Example usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../autoapi/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">salesanalyzer</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">salesanalyzer.sales_summary_statistics</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for salesanalyzer.sales_summary_statistics</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<div class="viewcode-block" id="sales_summary_statistics">
+<a class="viewcode-back" href="../../autoapi/salesanalyzer/sales_summary_statistics/index.html#salesanalyzer.sales_summary_statistics.sales_summary_statistics">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">sales_summary_statistics</span><span class="p">(</span><span class="n">sales_data</span><span class="p">,</span> <span class="n">quantity_col</span><span class="o">=</span><span class="s1">&#39;Quantity&#39;</span><span class="p">,</span> <span class="n">price_col</span><span class="o">=</span><span class="s1">&#39;UnitPrice&#39;</span><span class="p">,</span> 
+                              <span class="n">customer_col</span><span class="o">=</span><span class="s1">&#39;CustomerID&#39;</span><span class="p">,</span> <span class="n">invoice_col</span><span class="o">=</span><span class="s1">&#39;InvoiceNo&#39;</span><span class="p">,</span> 
+                              <span class="n">description_col</span><span class="o">=</span><span class="s1">&#39;Description&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate summary statistics for sales data, including total revenue, unique customers, </span>
+<span class="sd">    average order value, top-selling products by quantity and revenue, and average revenue </span>
+<span class="sd">    per customer.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        sales_data (pandas.DataFrame): A DataFrame containing sales data with at least </span>
+<span class="sd">                                       the following columns: quantity_col, price_col, </span>
+<span class="sd">                                       customer_col, invoice_col, and description_col. </span>
+<span class="sd">        quantity_col (str): The name of the column containing the quantity sold.</span>
+<span class="sd">        price_col (str): The name of the column containing the unit price of the product.</span>
+<span class="sd">        customer_col (str): The name of the column containing the customer ID.</span>
+<span class="sd">        invoice_col (str): The name of the column containing the invoice number.</span>
+<span class="sd">        description_col (str): The name of the column containing the product description.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pandas.DataFrame: A DataFrame containing the calculated summary statistics. If </span>
+<span class="sd">                          no sales data is provided, returns an empty DataFrame.</span>
+
+<span class="sd">    The function computes the following statistics:</span>
+<span class="sd">    - &#39;total_revenue&#39;: The total revenue generated by all sales.</span>
+<span class="sd">    - &#39;unique_customers&#39;: The number of unique customers.</span>
+<span class="sd">    - &#39;average_order_value&#39;: The average value of an order (sum of revenue per invoice).</span>
+<span class="sd">    - &#39;top_selling_product_quantity&#39;: The product with the highest quantity sold.</span>
+<span class="sd">    - &#39;top_selling_product_revenue&#39;: The product with the highest total revenue.</span>
+<span class="sd">    - &#39;average_revenue_per_customer&#39;: The average revenue generated by each customer.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sales_data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;sales_data parameter should be a pandas DataFrame&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Check for missing or incorrect columns</span>
+    <span class="n">required_columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">quantity_col</span><span class="p">,</span> <span class="n">price_col</span><span class="p">,</span> <span class="n">customer_col</span><span class="p">,</span> <span class="n">invoice_col</span><span class="p">,</span> <span class="n">description_col</span><span class="p">]</span>
+    <span class="n">missing_columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">required_columns</span> <span class="k">if</span> <span class="n">col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sales_data</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">missing_columns</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Missing required columns: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">missing_columns</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sales_data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({})</span>
+    
+    <span class="c1"># Calculate revenue</span>
+    <span class="n">sales_data</span><span class="p">[</span><span class="s1">&#39;Revenue&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sales_data</span><span class="p">[</span><span class="n">quantity_col</span><span class="p">]</span> <span class="o">*</span> <span class="n">sales_data</span><span class="p">[</span><span class="n">price_col</span><span class="p">]</span>
+    <span class="n">sales_data</span><span class="p">[</span><span class="s1">&#39;Revenue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    
+    <span class="c1"># Calculate summary statistics</span>
+    <span class="n">unique_customers</span> <span class="o">=</span> <span class="n">sales_data</span><span class="p">[</span><span class="n">customer_col</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
+    <span class="n">total_revenue</span> <span class="o">=</span> <span class="n">sales_data</span><span class="p">[</span><span class="s1">&#39;Revenue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    
+    <span class="n">top_selling_product_quantity</span> <span class="o">=</span> <span class="n">sales_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">description_col</span><span class="p">)[</span><span class="n">quantity_col</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
+    <span class="n">top_selling_product_revenue</span> <span class="o">=</span> <span class="n">sales_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">description_col</span><span class="p">)[</span><span class="s1">&#39;Revenue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
+    
+    <span class="n">average_order_value</span> <span class="o">=</span> <span class="n">sales_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">invoice_col</span><span class="p">)[</span><span class="s1">&#39;Revenue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    
+    <span class="n">revenue_per_customer</span> <span class="o">=</span> <span class="n">sales_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">customer_col</span><span class="p">)[</span><span class="s1">&#39;Revenue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">average_revenue_per_customer</span> <span class="o">=</span> <span class="n">revenue_per_customer</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    
+    <span class="c1"># Create summary statistics</span>
+    <span class="n">summary</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;total_revenue&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">total_revenue</span><span class="p">],</span>
+        <span class="s1">&#39;unique_customers&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">unique_customers</span><span class="p">],</span>
+        <span class="s1">&#39;average_order_value&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">average_order_value</span><span class="p">],</span>
+        <span class="s1">&#39;top_selling_product_quantity&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">top_selling_product_quantity</span><span class="p">],</span>
+        <span class="s1">&#39;top_selling_product_revenue&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">top_selling_product_revenue</span><span class="p">],</span>
+        <span class="s1">&#39;average_revenue_per_customer&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">average_revenue_per_customer</span><span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">summary</span><span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Yeji Sohn, Daria Khon, Franklin Aryee.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

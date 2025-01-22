@@ -1,0 +1,30 @@
+salesanalyzer
+=============
+
+.. py:module:: salesanalyzer
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/salesanalyzer/predict_sales/index
+   /autoapi/salesanalyzer/sales_summary_statistics/index
+   /autoapi/salesanalyzer/segment_revenue_share/index
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   salesanalyzer.__version__
+
+
+Package Contents
+----------------
+
+.. py:data:: __version__
+

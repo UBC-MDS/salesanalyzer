@@ -1,0 +1,57 @@
+salesanalyzer.predict_sales
+===========================
+
+.. py:module:: salesanalyzer.predict_sales
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   salesanalyzer.predict_sales.predict_sales
+
+
+Module Contents
+---------------
+
+.. py:function:: predict_sales(sales_data, new_data, numeric_features, categorical_features, target, date_feature=None, test_size=0.3)
+
+   Predicts future sales based on the provided historical data.
+
+   Parameters:
+   -----------
+   sales_data: pd.DataFrame
+       DataFrame containing historical sales data.
+   new_data: pd.DataFrame
+       DataFrame containing new data to predict on.
+   numeric_features: list
+       List of columns to use as features with numeric data type.
+   categorical_features: list
+       List of columns to use as features with character data type.
+   target: str
+       Name of the target column.
+   date_feature: str
+       Name of columns to use as features with datetime data type.
+       Default: None
+   test_size: float
+       Proportiona of data to be used for testing.
+       Default value is 0.3
+
+   Returns:
+   --------
+   dict:
+       A dictionary with model performance and a prediction
+
+   Examples:
+   --------
+   >>> sales_data = pd.DataFrame({'name': ['laptop', 'monitor'], 'price': [100, 200], 'quantity': [2, 1]})
+   >>> new_data = pd.DataFrame({'name': 'laptop', 'price' : 300})
+   >>> numeric_features = ['price']
+   >>> categorical_features = ['name']
+   >>> target = 'quantity'
+   >>> predict_sales(sales_data, new_data, numeric_features, categorical_features, target)
+   {'MSE of the model': np.float64(1.02),
+   'Preicted values': array([ 245.40])}
+
+
