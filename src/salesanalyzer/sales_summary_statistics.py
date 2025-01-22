@@ -3,7 +3,7 @@ import pandas as pd
 
 def sales_summary_statistics(sales_data: pd.DataFrame, quantity_col: str = 'Quantity', price_col: str = 'UnitPrice',
                              customer_col: str = 'CustomerID', invoice_col: str = 'InvoiceNo',
-                             description_col: str = 'Description'):
+                             description_col: str = 'Description') -> pd.DataFrame:
     """
     Generate summary statistics for sales data, including total revenue, unique customers, 
     average order value, top-selling products by quantity and revenue, and average revenue 
