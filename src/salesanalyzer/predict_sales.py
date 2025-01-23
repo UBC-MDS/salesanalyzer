@@ -26,7 +26,7 @@ def predict_sales(sales_data, new_data, numeric_features, categorical_features, 
         Name of columns to use as features with datetime data type.
         Default: None
     test_size: float
-        Proportiona of data to be used for testing.
+        Proportion of data to be used for testing.
         Default value is 0.3
     
     Returns:
