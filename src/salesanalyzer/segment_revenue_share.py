@@ -87,5 +87,16 @@ def segment_revenue_share(sales_data,
             (revenue_share['TotalRevenue'] / total_revenue) * 100
         )
 
-    revenue_share = revenue_share.round({'TotalRevenue': 2, 'RevenueShare (%)': 2})
+    # Round to 2 decimal places
+    revenue_share = revenue_share.round(
+        {'TotalRevenue': 2, 'RevenueShare (%)': 2}
+        )
+
+    # Ensure the segments are in order: cheap, medium, expensive
+    segment_order = ['cheap', 'medium', 'expensive']
+    revenue_share['PriceSegment'] = pd.Categorical(
+        revenue_share['PriceSegment'], categories=segment_order, ordered=True)
+
+    revenue_share = revenue_share.sort_values(by='PriceSegment').reset_index(drop=True)
+    
     return revenue_share
