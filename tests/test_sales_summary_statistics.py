@@ -36,7 +36,7 @@ def test_sales_summary_statistics_normal_data(sample_data):
         'top_selling_product_quantity': ['Product C'],
         'top_selling_product_revenue': ['Product C'],
         'average_revenue_per_customer': [1316.666667]
-    })
+    }).T.rename(columns={0: "Value"})
     
     assert_frame_equal(result, expected, check_exact=False, check_like=True)
 
@@ -56,7 +56,7 @@ def test_sales_summary_statistics_single_transaction(sample_data):
         'top_selling_product_quantity': ['Product A'],
         'top_selling_product_revenue': ['Product A'],
         'average_revenue_per_customer': [1000.0]
-    })
+    }).T.rename(columns={0: "Value"})
     
     assert_frame_equal(result, expected, check_exact=False, check_like=True)
 
