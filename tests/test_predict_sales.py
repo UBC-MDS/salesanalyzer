@@ -9,6 +9,7 @@ valid_num_features = ['unit_price']
 valid_date_feature = 'invoice_date'
 valid_target = 'quantity'
 
+
 def test_input_type():
     """Test that predict_sales() detects the wrong input data types correctly"""
     with pytest.raises(ValueError, match="sales_data parameter should be a pandas DataFrame"):
@@ -22,15 +23,15 @@ def test_input_type():
     with pytest.raises(ValueError, match="numeric features should be a list"):
         predict_sales(test_data, test_new_data, "not_a_list",
                       valid_cat_features, valid_target, valid_date_feature)
-    
+
     with pytest.raises(ValueError, match="categorical features should be a list"):
         predict_sales(test_data, test_new_data, valid_num_features,
                       "not_a_list", valid_target, valid_date_feature)  
-    
+
     with pytest.raises(ValueError, match="target should be a string"):
         predict_sales(test_data, test_new_data, valid_num_features,
                       valid_cat_features, 12345, valid_date_feature) 
-            
+        
     with pytest.raises(ValueError, match="date features should be a string"):
         predict_sales(test_data, test_new_data, valid_num_features,
                       valid_cat_features, valid_target, 12345) 
@@ -38,25 +39,27 @@ def test_input_type():
     with pytest.raises(TypeError, match="numeric_features should countain numeric data type only"):
         predict_sales(test_data, test_new_data, ['city', 'unit_price'],
                       valid_cat_features, valid_target, valid_date_feature)
-        
+
+  
 def test_output_no_date_feature():
     """Tests that predict_sales() round and returns a dictionary without a date feature"""
     result = predict_sales(test_data, test_new_data, valid_num_features, 
                            valid_cat_features, valid_target)
-    assert isinstance(result, dict)
+    assert isinstance(result, pd.DataFrame)
     assert all(isinstance(value, float) for value in result["Predicted values"])
     assert all(abs(value - round(value, 2)) < 1e-6 for value in result["Predicted values"])
+
 
 def test_output_with_date_feature():
     """Tests that predict_sales() round and returns a dictionary with a date feature"""
     result = predict_sales(test_data, test_new_data, valid_num_features, 
                            valid_cat_features, valid_target, valid_date_feature)
-    assert isinstance(result, dict)
+    assert isinstance(result, pd.DataFrame)
     assert all(isinstance(value, float) for value in result["Predicted values"])
     assert all(abs(value - round(value, 2)) < 1e-6 for value in result["Predicted values"])
+
 
 def test_missing_input():
     """Tests if predict_sales() raises a ValueError when there is missing input"""
     with pytest.raises(Exception):
         predict_sales(test_data, new_data)
-
