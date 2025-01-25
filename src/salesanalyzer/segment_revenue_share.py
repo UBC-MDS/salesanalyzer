@@ -112,5 +112,5 @@ def segment_revenue_share(sales_data: pd.DataFrame,
         revenue_share['PriceSegment'], categories=segment_order, ordered=True)
 
     revenue_share = revenue_share.sort_values(by='PriceSegment').reset_index(drop=True)
- 
+
     return revenue_share
