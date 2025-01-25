@@ -98,4 +98,7 @@ def sales_summary_statistics(sales_data: pd.DataFrame, quantity_col: str = 'Quan
         'average_revenue_per_customer': [average_revenue_per_customer]
     }
 
-    return pd.DataFrame(summary)
+    # Transpose and rename the column
+    summary_t = pd.DataFrame(summary).T.rename(columns={0: "Value"})
+
+    return summary_t
