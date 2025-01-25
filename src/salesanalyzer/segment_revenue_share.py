@@ -1,9 +1,9 @@
 import pandas as pd
 
 
-def segment_revenue_share(sales_data,
-                          price_col='UnitPrice',
-                          quantity_col='Quantity'):
+def segment_revenue_share(sales_data: pd.DataFrame,
+                          price_col: str = 'UnitPrice',
+                          quantity_col: str = 'Quantity') -> pd.DataFrame:
     """
     Segments products into three categories—cheap, medium, and expensive—
     based on price, and calculates their respective share in total revenue.
@@ -32,7 +32,7 @@ def segment_revenue_share(sales_data,
         If any of the specified columns are missing in the DataFrame.
     TypeError:
         If any of the columns contain invalid data types.
-    
+ 
     Example:
     --------
     >>> sales_data = pd.DataFrame({
@@ -112,5 +112,5 @@ def segment_revenue_share(sales_data,
         revenue_share['PriceSegment'], categories=segment_order, ordered=True)
 
     revenue_share = revenue_share.sort_values(by='PriceSegment').reset_index(drop=True)
-    
+ 
     return revenue_share
