@@ -1,7 +1,20 @@
 # CHANGELOG
 
 
+## v0.1.1 (2025-01-29)
+
+### Bug Fixes
+
+- Test cd
+  ([`c2c8149`](https://github.com/UBC-MDS/salesanalyzer/commit/c2c814907ccee9706c757feb3ad3b7350a890e37))
+
+
 ## v0.1.0 (2025-01-29)
+
+### Bug Fixes
+
+- Changes release token to github token
+  ([`cee3ca8`](https://github.com/UBC-MDS/salesanalyzer/commit/cee3ca8789f743f703e172748b1f18185cd7dd97))
 
 ### Build System
 
