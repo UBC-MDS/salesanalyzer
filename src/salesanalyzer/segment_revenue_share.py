@@ -1,9 +1,9 @@
 import pandas as pd
 
 
-def segment_revenue_share(sales_data,
-                          price_col='unit_price',
-                          quantity_col='quantity'):
+def segment_revenue_share(sales_data: pd.DataFrame,
+                          price_col: str = 'UnitPrice',
+                          quantity_col: str = 'Quantity') -> pd.DataFrame:
     """
     Segments products into three categories—cheap, medium, and expensive—
     based on price, and calculates their respective share in total revenue.
@@ -13,9 +13,9 @@ def segment_revenue_share(sales_data,
     sales_data : pd.DataFrame
         DataFrame containing historical sales data.
     price_col : str
-        Column containing product prices. Default is 'unit_price'.
+        Column containing product prices. Default is 'UnitPrice'.
     quantity_col : str
-        Column containing quantities sold. Default is 'quantity'.
+        Column containing quantities sold. Default is 'Quantity'.
 
     Returns:
     --------
@@ -32,6 +32,20 @@ def segment_revenue_share(sales_data,
         If any of the specified columns are missing in the DataFrame.
     TypeError:
         If any of the columns contain invalid data types.
+ 
+    Example:
+    --------
+    >>> sales_data = pd.DataFrame({
+    ...     'UnitPrice': [10, 20, 50, 70, 100, 30, 40],
+    ...     'Quantity': [2, 3, 1, 5, 4, 6, 3]
+    ... })
+
+    >>> result = segment_revenue_share(sales_data)
+    >>> print(result)
+        PriceSegment  TotalRevenue  RevenueShare (%)
+    0        cheap            80              6.78
+    1       medium           350             29.66
+    2    expensive           750             63.56
     """
     # Check if input dataframe is empty
     if sales_data.empty:
@@ -87,5 +101,16 @@ def segment_revenue_share(sales_data,
             (revenue_share['TotalRevenue'] / total_revenue) * 100
         )
 
-    revenue_share = revenue_share.round({'TotalRevenue': 2, 'RevenueShare (%)': 2})
+    # Round to 2 decimal places
+    revenue_share = revenue_share.round(
+        {'TotalRevenue': 2, 'RevenueShare (%)': 2}
+        )
+
+    # Ensure segments are in order: cheap, medium, expensive
+    segment_order = ['cheap', 'medium', 'expensive']
+    revenue_share['PriceSegment'] = pd.Categorical(
+        revenue_share['PriceSegment'], categories=segment_order, ordered=True)
+
+    revenue_share = revenue_share.sort_values(by='PriceSegment').reset_index(drop=True)
+
     return revenue_share
