@@ -1,12 +1,25 @@
 # CHANGELOG
 
 
+## v1.0.0 (2025-01-29)
+
+### Features
+
+- Cd test
+  ([`1049a04`](https://github.com/UBC-MDS/salesanalyzer/commit/1049a0433b5c121565040efc88310c190034d53f))
+
+
 ## v0.1.1 (2025-01-29)
 
 ### Bug Fixes
 
 - Test cd
   ([`c2c8149`](https://github.com/UBC-MDS/salesanalyzer/commit/c2c814907ccee9706c757feb3ad3b7350a890e37))
+
+### Features
+
+- Test cd
+  ([`d55966e`](https://github.com/UBC-MDS/salesanalyzer/commit/d55966ea6a4dcc2e867df932a2dea202da823fa7))
 
 
 ## v0.1.0 (2025-01-29)
