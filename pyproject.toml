@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "salesanalyzer_mds"
-version = "1.0.0"
+version = "2.0.1"
 description = "A package for doing great things!"
 authors = ["Daria Khon, Franklin Aryee, Yeji Sohn"]
 license = "MIT"
