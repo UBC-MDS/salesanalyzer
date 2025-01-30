@@ -25,7 +25,7 @@ jobs:
         run: poetry install
 
       - name: Test with pytest
-        run: poetry run pytest tests/ --cov=salesanalyzer --cov-report=xml
+        run: poetry run pytest tests/ --cov=salesanalyzer_mds --cov-report=xml
 
       - name: Use Codecov to track coverage
         uses: codecov/codecov-action@v5
@@ -81,7 +81,7 @@ jobs:
             pip install \
             --index-url https://test.pypi.org/simple/ \
             --extra-index-url https://pypi.org/simple \
-            salesanalyzer
+            salesanalyzer_mds
 
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1

@@ -1,4 +1,4 @@
-from salesanalyzer.predict_sales import predict_sales
+from salesanalyzer_mds.predict_sales import predict_sales
 import pytest
 import pandas as pd
 

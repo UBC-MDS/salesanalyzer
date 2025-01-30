@@ -6,7 +6,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = u"salesanalyzer"
+project = u"salesanalyzer_mds"
 copyright = u"2025, Yeji Sohn, Daria Khon, Franklin Aryee"
 author = u"Yeji Sohn, Daria Khon, Franklin Aryee"
 

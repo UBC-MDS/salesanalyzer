@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "salesanalyzer"
+name = "salesanalyzer-mds"
 version = "1.0.0"
 description = "A package for doing great things!"
 authors = ["Daria Khon, Franklin Aryee, Yeji Sohn"]
