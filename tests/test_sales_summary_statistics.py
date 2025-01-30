@@ -1,4 +1,4 @@
-from salesanalyzer.sales_summary_statistics import sales_summary_statistics
+from salesanalyzer_mds.sales_summary_statistics import sales_summary_statistics
 import pytest
 import pandas as pd
 from pandas.testing import assert_frame_equal

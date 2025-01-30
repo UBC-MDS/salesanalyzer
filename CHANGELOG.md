@@ -1,26 +1,7 @@
 # CHANGELOG
 
 
-## v2.0.0 (2025-01-29)
-
-### Bug Fixes
-
-- More python version
-  ([`2bef41f`](https://github.com/UBC-MDS/salesanalyzer/commit/2bef41f149552bef325b544a5fa5544d3c6d743e))
-
-- Python version for cd
-  ([`9aee0b5`](https://github.com/UBC-MDS/salesanalyzer/commit/9aee0b59f7b08c2b1a933f5f3572eb283e5f63ce))
-
-
 ## v1.0.0 (2025-01-29)
-
-### Bug Fixes
-
-- Python version for cd
-  ([`0985c72`](https://github.com/UBC-MDS/salesanalyzer/commit/0985c72ff52dca9bd83116a3a17bd1cfed421b34))
-
-- Semantic release
-  ([`91c2ecc`](https://github.com/UBC-MDS/salesanalyzer/commit/91c2eccfec1a1024d2fd410db1649a3131e41419))
 
 ### Features
 
