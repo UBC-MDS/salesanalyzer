@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v2.1.0 (2025-01-31)
+
+### Features
+
+- Updated segment function to include user-defined thresholds
+  ([`c216537`](https://github.com/UBC-MDS/salesanalyzer/commit/c216537942ad3c7dbdc3d5574c38eb91c4ce01e1))
+
+### Testing
+
+- Updated associated to test to account for price thresholds
+  ([`52de6b2`](https://github.com/UBC-MDS/salesanalyzer/commit/52de6b206004b1a308684bf39301341dedb75d30))
+
+
 ## v2.0.1 (2025-01-30)
 
 
