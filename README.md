@@ -1,15 +1,15 @@
-# salesanalyzer
+# salesanalyzer_mds
 
 [![Documentation Status](https://readthedocs.org/projects/salesanalyzer/badge/?version=latest)](https://salesanalyzer.readthedocs.io/en/latest/?badge=latest)
 
 A python package that helps with the analysis on a sales data. The packagage will contain functions to be used as tools for identifying market segment, predicting future sales and analyzing seasonal revenue trends. <br>
 
-The sales_analyzer package will be an addition to the Python ecosystem as a specialized tool for analyzing retail sales data, targeting small to medium-sized businesses that may not have the resources for an in-house data analytics team and who could benefit from ready-to-use functions for common sales-related tasks. While existing packages such as `Pandas` and `Scikit-learn` provide general tools for data manipulation and machine learning predictions, `salesanalyzer` aims to streamline the process by offering a suite of pre-built, retail-specific analytical functions.
+The sales_analyzer package will be an addition to the Python ecosystem as a specialized tool for analyzing retail sales data, targeting small to medium-sized businesses that may not have the resources for an in-house data analytics team and who could benefit from ready-to-use functions for common sales-related tasks. While existing packages such as `Pandas` and `Scikit-learn` provide general tools for data manipulation and machine learning predictions, `salesanalyzer_mds` aims to streamline the process by offering a suite of pre-built, retail-specific analytical functions.
 
 ## Installation
 
 ```bash
-$ pip install salesanalyzer
+$ pip install salesanalyzer_mds
 ```
 
 ## Functions
@@ -20,13 +20,13 @@ $ pip install salesanalyzer
 
 ## Usage
 
-`salesanalyzer` can be used to extract sales data insights from available data.
+`salesanalyzer_mds` can be used to extract sales data insights from available data.
 1. Set up imports
 
 ```
-from salesanalyzer.sales_summary_statistics import sales_summary_statistics
-from salesanalyzer.segment_revenue_share import segment_revenue_share
-from salesanalyzer.predict_sales import predict_sales
+from salesanalyzer_mds.sales_summary_statistics import sales_summary_statistics
+from salesanalyzer_mds.segment_revenue_share import segment_revenue_share
+from salesanalyzer_mds.predict_sales import predict_sales
 import pandas as pd     # additional import to handle your sales data
 ```
 
@@ -76,7 +76,7 @@ pytest tests/
 
 To assess the branch coverage for this package:
 ```bash
-pytest --cov=salesanalyzer --cov-branch
+pytest --cov=salesanalyzer_mds --cov-branch
 ```
 
 ## Dependencies
@@ -103,8 +103,8 @@ Interested in contributing? Check out the contributing guidelines. Please note t
 
 ## License
 
-`salesanalyzer` was created by Yeji Sohn, Daria Khon, Franklin Aryee. It is licensed under the terms of the MIT license.
+`salesanalyzer_mds` was created by Yeji Sohn, Daria Khon, Franklin Aryee. It is licensed under the terms of the MIT license.
 
 ## Credits
 
-`salesanalyzer` was created with [`cookiecutter`](https://cookiecutter.readthedocs.io/en/latest/) and the `py-pkgs-cookiecutter` [template](https://github.com/py-pkgs/py-pkgs-cookiecutter).
+`salesanalyzer_mds` was created with [`cookiecutter`](https://cookiecutter.readthedocs.io/en/latest/) and the `py-pkgs-cookiecutter` [template](https://github.com/py-pkgs/py-pkgs-cookiecutter).
