@@ -1,6 +1,7 @@
 # salesanalyzer_mds
 
 [![Documentation Status](https://readthedocs.org/projects/salesanalyzer/badge/?version=latest)](https://salesanalyzer.readthedocs.io/en/latest/?badge=latest)
+[![ci-cd](https://github.com/UBC-MDS/salesanalyzer/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/UBC-MDS/salesanalyzer/actions/workflows/ci-cd.yml)
 
 A python package that helps with the analysis on a sales data. The packagage will contain functions to be used as tools for identifying market segment, predicting future sales and analyzing seasonal revenue trends. <br>
 
