@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "salesanalyzer_mds"
 version = "2.0.1"
-description = "A package for doing great things!"
+description = "A Python package for sales forecasting, statistical analysis, and data-driven insights"
 authors = ["Daria Khon, Franklin Aryee, Yeji Sohn"]
 license = "MIT"
 readme = "README.md"
