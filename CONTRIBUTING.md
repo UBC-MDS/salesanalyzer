@@ -47,10 +47,10 @@ If you spot small typos or grammatical errors in documentation, you can fix them
 
 ## Get Started!
 
-Ready to contribute? Here's how to set up `salesanalyzer` for local development.
+Ready to contribute? Here's how to set up `salesanalyzer_mds` for local development.
 
-1. Download a copy of `salesanalyzer` locally.
-2. Install `salesanalyzer` using `poetry`:
+1. Download a copy of `salesanalyzer_mds` locally.
+2. Install `salesanalyzer_mds` using `poetry`:
 
     ```console
     $ poetry install
@@ -85,5 +85,5 @@ Before you submit a pull request, check that it meets these guidelines:
 
 ## Code of Conduct
 
-Please note that the `salesanalyzer` project is released with a
+Please note that the `_mds_` project is released with a
 Code of Conduct. By contributing to this project you agree to abide by its terms.

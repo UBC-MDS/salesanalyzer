@@ -1,0 +1,6 @@
+name: salesanalyzer
+channels:
+  - conda-forge
+dependencies:
+  - python==3.10
+  - cookiecutter==2.6.0
