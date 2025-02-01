@@ -1,5 +1,5 @@
 # salesanalyzer_mds
-
+[![Project Status: Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![Documentation Status](https://readthedocs.org/projects/salesanalyzer/badge/?version=latest)](https://salesanalyzer.readthedocs.io/en/latest/?badge=latest)
 [![ci-cd](https://github.com/UBC-MDS/salesanalyzer/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/UBC-MDS/salesanalyzer/actions/workflows/ci-cd.yml)
 [![codecov](https://codecov.io/gh/UBC-MDS/salesanalyzer/graph/badge.svg?token=BLQNynILl1)](https://codecov.io/gh/UBC-MDS/salesanalyzer)
