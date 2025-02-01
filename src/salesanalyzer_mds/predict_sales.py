@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.compose import make_column_transformer
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_squared_error, r2_score
 
 def predict_sales(sales_data, new_data, numeric_features, categorical_features, target, date_feature=None, test_size=0.3):
     """
@@ -32,7 +32,7 @@ def predict_sales(sales_data, new_data, numeric_features, categorical_features, 
     Returns:
     --------
     pd.DataFrame:
-        A data frame with prediction values, and a printed out MSE score.
+        A data frame with prediction values, and a printed out MSE score and R^2 score.
     
     Examples:
     ---------
@@ -99,10 +99,13 @@ def predict_sales(sales_data, new_data, numeric_features, categorical_features, 
     
     y_pred = model.predict(X_test)
     mse = mean_squared_error(y_test, y_pred)
+    r2 = r2_score(y_test, y_pred)
     
     new_pred = model.predict(X_new)
     
     print("MSE of the model:", round(mse, 2))
+    print("R_squared of the model:", round(r2, 2))
+    
     result = pd.DataFrame({
         "Predicted values": [round(value, 2) for value in new_pred]
     })
