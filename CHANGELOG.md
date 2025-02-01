@@ -1,6 +1,23 @@
 # CHANGELOG
 
 
+## v2.1.2 (2025-02-01)
+
+### Bug Fixes
+
+- Feedback addressed by DongchunChen, add other metrics to predict_sales
+  ([`1162e45`](https://github.com/UBC-MDS/salesanalyzer/commit/1162e45ba98650fa0db7dd7f5570a8e111579079))
+
+- Feedback addressed by jenson-chang, #4 add pytest_fixture to test_predict_sales
+  ([`93a1aa4`](https://github.com/UBC-MDS/salesanalyzer/commit/93a1aa4f7e27fbb97b27401c5f9c94cfd614aa84))
+
+- Feedback addressed by Lukman-Lateef, #3 added definitions of MSE to vignette
+  ([`22e0b98`](https://github.com/UBC-MDS/salesanalyzer/commit/22e0b9803d48b0d7e6a314e4c43ce34efa5b8ba7))
+
+- Removed test_data.csv as per feedback from jenson-chang
+  ([`f8b4fab`](https://github.com/UBC-MDS/salesanalyzer/commit/f8b4fab69a22202939c8a7d97aa68475847d7302))
+
+
 ## v2.1.1 (2025-02-01)
 
 ### Bug Fixes
