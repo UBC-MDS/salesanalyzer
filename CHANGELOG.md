@@ -1,6 +1,29 @@
 # CHANGELOG
 
 
+## v2.1.1 (2025-02-01)
+
+### Bug Fixes
+
+- Feedback addressed by by Lukman-Lateef, jinxyou (add repostatus badge)
+  ([`0d9770d`](https://github.com/UBC-MDS/salesanalyzer/commit/0d9770d4892a6ed34f59df9bc48633d1a6db7eef))
+
+- Feedback addressed by DongchunChen (Highlight package advantages more)
+  ([`aae84cc`](https://github.com/UBC-MDS/salesanalyzer/commit/aae84ccafe5428558adf53930bff4653df9a1f29))
+
+- Feedback addressed by DongchunChen (sales_summary_statistics top-selling ties)
+  ([`c68dd42`](https://github.com/UBC-MDS/salesanalyzer/commit/c68dd42a8b6a4d98181ef21a4f532a8e96e43e63))
+
+- Feedback addressed by jenson-chang (Generic codeblock -> python)
+  ([`3ca5223`](https://github.com/UBC-MDS/salesanalyzer/commit/3ca52239095bb902ff09584070f01d545e8fdd1c))
+
+- Feedback addressed by jenson-chang (instructions for the development version)
+  ([`b84c8be`](https://github.com/UBC-MDS/salesanalyzer/commit/b84c8be39ebe155104b4742d57127847d3013465))
+
+- Feedback addressed by Lukman-Lateef, Jinxou (add testcov, python ver, package ver bages)
+  ([`eab2af4`](https://github.com/UBC-MDS/salesanalyzer/commit/eab2af4af05bed343e6acd3e6ad72e9fdd192dbb))
+
+
 ## v2.1.0 (2025-01-31)
 
 ### Features
