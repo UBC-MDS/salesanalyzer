@@ -8,7 +8,7 @@
 
 A Python package designed to simplify retail sales data analysis for small to medium-sized businesses. This tool offers a set of pre-built functions that make it easy to identify market segments, predict future sales, and analyze seasonal revenue trends.  <br>
 
-## Why sales_analyzer?
+## Why salesanalyzer_mds?
 
 Small to medium-sized businesses (SMBs) often lack the resources for in-house data teams or complex analytics tools. sales_analyzer is here to bridge that gap by providing easy-to-use, specialized functions that allow businesses to extract valuable insights from their sales data without requiring deep expertise in data science.
 
