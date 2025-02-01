@@ -28,7 +28,7 @@ $ pip install salesanalyzer_mds
 `salesanalyzer_mds` can be used to extract sales data insights from available data.
 1. Set up imports
 
-```
+```python
 from salesanalyzer_mds.sales_summary_statistics import sales_summary_statistics
 from salesanalyzer_mds.segment_revenue_share import segment_revenue_share
 from salesanalyzer_mds.predict_sales import predict_sales
@@ -41,7 +41,7 @@ import pandas as pd     # additional import to handle your sales data
 
 **Summary statistics**
 
-```
+```python
 sales_summary_statistics(your_sales_data)
 ```
 
@@ -56,7 +56,7 @@ The `sales_summary_statistics()` function returns a pandas DataFrame with:
 
 **Segment revenue share**
 
-```
+```python
 segment_revenue_share(your_sales_data, 
                       price_col='UnitPrice', 
                       quantity_col='Quantity',
@@ -71,7 +71,7 @@ The `segment_revenue_share()` funtion returns a pandas DataFrame showing the tot
 
 **Predict sales**
 
-```
+```python
 predict_sales(your_sales_data, 
               new_data,     # new sales data to base the predictions on
               numeric_features = ['UnitPrice'],
