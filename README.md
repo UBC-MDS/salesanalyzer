@@ -97,15 +97,34 @@ predict_sales(your_sales_data,
 The `predict_sales()` function returns a DataFrame with prediction values, and a printed out MSE score.
 
 ## Developer notes:
+### Install Development Version
+1. Clone the repository and navigate into the project root directory.
+
+2. Create a new environment with Python 3.10:
+
+    ```bash
+    conda create -n salesanalyzermds python=3.10
+    conda activate salesanalyzermds
+    ```
+
+3. Install Poetry by following [these instructions](https://python-poetry.org/docs/#installation), and then run the following bash command to install the necessary dependencies:
+
+    ```bash
+    poetry install
+    ```
+
 ### Running The Tests
 
-Run the following command in the terminal from the project's root directory to execute the tests:
+To test the `salesanalyzer-mds` package, follow the steps below:
+
+1. Execute the tests using `pytest` from the root project directory:
 
 ```bash
 pytest tests/
 ```
 
-To assess the branch coverage for this package:
+2. To assess the branch coverage for this package:
+
 ```bash
 pytest --cov=salesanalyzer_mds --cov-branch
 ```
