@@ -53,7 +53,7 @@ def sales_summary_statistics(sales_data: pd.DataFrame, quantity_col: str = 'Quan
        average_revenue_per_customer  
     0                     1316.666667  
     """
-    
+
     if not isinstance(sales_data, pd.DataFrame):
         raise ValueError("sales_data parameter should be a pandas DataFrame")
 
@@ -77,10 +77,19 @@ def sales_summary_statistics(sales_data: pd.DataFrame, quantity_col: str = 'Quan
     unique_customers = sales_data[customer_col].nunique()
     total_revenue = sales_data['Revenue'].sum().astype(float)
 
-    top_selling_product_quantity = sales_data.groupby(
-        description_col)[quantity_col].sum().idxmax()
-    top_selling_product_revenue = sales_data.groupby(
-        description_col)['Revenue'].sum().idxmax()
+    # Calculate top-selling products based on quantity
+    top_selling_product_quantity = (
+        sales_data.groupby(description_col)[quantity_col].sum())
+    max_quantity = top_selling_product_quantity.max()
+    top_selling_product_quantity = (
+        top_selling_product_quantity[top_selling_product_quantity == max_quantity].index.tolist())
+
+    # Calculate top-selling products based on revenue
+    top_selling_product_revenue = (
+        sales_data.groupby(description_col)['Revenue'].sum())
+    max_revenue = top_selling_product_revenue.max()
+    top_selling_product_revenue = (
+        top_selling_product_revenue[top_selling_product_revenue == max_revenue].index.tolist())
 
     average_order_value = sales_data.groupby(
         invoice_col)['Revenue'].sum().mean()
@@ -93,8 +102,8 @@ def sales_summary_statistics(sales_data: pd.DataFrame, quantity_col: str = 'Quan
         'total_revenue': [total_revenue],
         'unique_customers': [unique_customers],
         'average_order_value': [average_order_value],
-        'top_selling_product_quantity': [top_selling_product_quantity],
-        'top_selling_product_revenue': [top_selling_product_revenue],
+        'top_selling_product_quantity': [', '.join(top_selling_product_quantity)],
+        'top_selling_product_revenue': [', '.join(top_selling_product_revenue)],
         'average_revenue_per_customer': [average_revenue_per_customer]
     }
 
